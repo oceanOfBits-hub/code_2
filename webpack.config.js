@@ -2,7 +2,7 @@ const path = require("path");
 
 module.exports = {
     mode: "development",
-    entry: "index.js",
+    entry: "./index.js",
     output: {
         path: path.resolve(__dirname,"public"),
         filename: "main.js",
@@ -17,11 +17,16 @@ module.exports = {
         liveReload: true,
     },
     resolve: {
+       extensions: [".js",".jsx",".json",".ts"],
+    },
+    module: {
         rules: [
             {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
-                use: "babel-loader"
+                use: {
+                    loader : "babel-loader"
+                }
             },
         ],
     },
